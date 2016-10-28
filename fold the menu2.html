@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>折叠菜单1</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            ol,ul{
+                list-style:none;
+            }
+            #menu .main-menu{
+                width:100px;
+                background-color:black;
+            }
+
+            h3{
+                width:100px;
+                height:30px;
+                color:white;
+                text-align:center;
+                line-height:30px;
+            }
+            #menu .sub-menu li{
+                background-color:#ccc;
+                text-indent:5px;
+                border-bottom:1px solid black;
+            }
+            #menu .sub-menu a{
+                text-decoration:none;
+                display:block;
+                width:100px;
+                height:30px;
+                line-height:30px;
+            }
+            #menu .sub-menu{
+                display:none;
+            }
+
+        </style>
+    </head>
+    <body>
+    <ul id="menu">
+        <li class="main-menu">
+            <h3 onselect="return false;">link1</h3>
+            <ul class="sub-menu">
+                <li><a href="">sublink1</a></li>
+                <li><a href="">sublink2</a></li>
+                <li><a href="">sublink3</a></li>
+            </ul>
+        </li>
+        <li class="main-menu">
+            <h3 onselect="return false">link2</h3>
+            <ul class="sub-menu">
+                <li><a href="">sublink1</a></li>
+                <li><a href="">sublink2</a></li>
+                <li><a href="">sublink3</a></li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var oUl = document.getElementById("menu");
+        var aH3 = oUl.getElementsByTagName("h3");
+        var aSubmenu = oUl.getElementsByTagName("ul");
+        var bShow = false;
+        for(var i=0;i<aH3.length;i++){
+            aH3[i].index = i;
+            aH3[i].onclick = function(){
+                var oSubmenu = aSubmenu[this.index];
+                if(this.bShow){
+                    oSubmenu.style.display = "block";
+                }else{
+                    oSubmenu.style.display = "none";
+                }
+                this.bShow = !this.bShow;
+
+               /* if(oSubmenu.style.display == "none" || oSubmenu.style.display == ""){
+                    oSubmenu.style.display = "block";
+                }
+                else{
+                    oSubmenu.style.display = "none";
+                }
+                function next(elem){
+                    do{
+                        elem = elem.nextSibling;
+                    }
+                    while(elem&&elem.nodeType != 1);
+                    return elem;
+                }*/
+
+ /*               if(this.nextElementSibling.style.display == "block"){
+//                    this.parentNode.children[1].style.display = "block"
+                    this.nextElementSibling.style.display = "none";
+                }
+                else{
+                    this.nextElementSibling.style.display = "block";
+                }*/
+            };
+        }
+    </script>
+    <!--nextsibiling在IE8以前中能找到兄弟元素ul，在IE8以后找到的是空格-->
+    <!--nextElementSibling只在标准浏览器中支持，IE8和IE8之前的都不支持-->
+    </body>
+</html>
