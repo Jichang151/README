@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>折叠菜单1</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            ol,ul{
+                list-style:none;
+            }
+            #menu .main-menu{
+                width:100px;
+                background-color:black;
+            }
+
+            h3{
+                width:100px;
+                height:30px;
+                color:white;
+                text-align:center;
+                line-height:30px;
+            }
+            #menu .sub-menu li{
+                background-color:#ccc;
+                text-indent:5px;
+                border-bottom:1px solid black;
+            }
+            #menu .sub-menu a{
+                text-decoration:none;
+                display:block;
+                width:100px;
+                height:30px;
+                line-height:30px;
+            }
+            #menu .sub-menu{
+                display:none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <ul id="menu">
+            <li class="main-menu">
+                <h3>link1</h3>
+                <ul class="sub-menu">
+                    <li><a href="">sublink1</a></li>
+                    <li><a href="">sublink2</a></li>
+                    <li><a href="">sublink3</a></li>
+                </ul>
+            </li>
+            <li class="main-menu">
+                <h3>link2</h3>
+                <ul class="sub-menu">
+                    <li><a href="">sublink1</a></li>
+                    <li><a href="">sublink2</a></li>
+                    <li><a href="">sublink3</a></li>
+                </ul>
+            </li>
+        </ul>
+        <script>
+            var oUl = document.getElementById("menu");
+            var aLi = oUl.getElementsByTagName("li");
+            for(var i=0;i<aLi.length;i++){
+                if(aLi[i].className =="main-menu"){
+                    aLi[i].onclick = function() {
+                        var oSubmenu = this.children[1];
+                        if(oSubmenu.style.display =="block"){
+                            oSubmenu.style.display = "none";
+                        }
+                        else{
+                            oSubmenu.style.display = "block";
+                        }
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
